@@ -1,20 +1,305 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container">
 
+  <!-- START Header -->
+  <div class="jumbotron">
+    <h1 class="display-4">Angular File Upload</h1>
+    <p class="lead">
+      Angular File Uploader based on <a href="https://github.com/valor-software/ng2-file-upload" target="_blank">ng2-file-upload</a>
+      including some enhancements
+    </p>
+    <hr class="my-4">
+    <p>
+      This example app uses <a href="https://angular.io">Angular 7</a>,
+      <a href="https://getbootstrap.com">Bootstrap 4</a>,
+      <a href="https://valor-software.com/ngx-bootstrap">ngx-bootstrap</a>
+      and <a href="http://fontawesome.com/">FontAwesome</a>
+    </p>
+    <a class="btn btn-primary btn-lg" href="https://www.github.com/tkarzewski/ng2-file-uploader" role="button">
+      <span class="fa fa-github"></span>
+      View on Github
+    </a>
+  </div>
+  <!-- END Header -->
+
+
+  <!-- START Accordion -->
+  <div class="row">
+    <div class="col-md-12">
+      <accordion>
+
+        <!-- START What is this -->
+        <accordion-group heading="What is this">
+          <p>
+            For a project I needed an Angular Uploader Lib, which is easy to use, offers some config and supports
+            multiple
+            Files uploaded in one Request. Because I didn't find any fullfilling these requirements I cloned <a
+            href="https://github.com/valor-software/ng2-file-upload" target="_blank">ng2-file-upload</a>,
+            merged <a href="https://github.com/valor-software/ng2-file-upload/pull/993">this PullRequest</a>, made some
+            Enhancements and created some Components to use it quickly.
+          </p>
+          <p>
+            So credits go to <a href="https://github.com/valor-software/">Valor Software</a> and
+            <a href="https://github.com/koenvanderlinden">Koen van der Linden</a>
+          </p>
+        </accordion-group>
+        <!-- END What is this -->
+
+        <!-- START Example -->
+        <accordion-group heading="Example" [isOpen]="true">
+
+          <!-- Start Uploader -->
+          <div class="alert alert-info"
+               [ngStyle]="{ 'visibility' : displayAddedFiles ? 'visible' : 'hidden' }">
+            {{ 'Added ' + uploader.queue.length + ' ' + (uploader.queue.length > 1 ? 'files' : 'file') + ' with ' +
+            getQueueFileSize() +' MB' }}
+          </div>
+
+          <div class="row">
+
+            <!-- Dropzone & Button -->
+            <div class="col-md-4">
+
+              <!-- Dropzone -->
+              <div bafFileDrop
+                   class="upload dropzone"
+                   [uploader]="uploader"
+                   [ngClass]="{'active': isDropZoneIndexHovered}"
+                   (fileOver)="isDropZoneIndexHovered = $event"
+                   (onFileDrop)="notificateForNewFiles($event)">
+                <div class="type__upload">
+                  <input bafFileSelect
+                         type="file"
+                         multiple
+                         id="upload"
+                         [accept]="allowedFileTypes"
+                         [uploader]="uploader"
+                         (onFileSelected)="notificateForNewFiles($event)">
+
+                  <i class="fa fa-upload"></i>
+                  <p>
+                    Drag and drop files here<br>
+                    or click to choose
+                  </p>
+                  <p>
+                    (max. {{ queueLimit }} files)
+                  </p>
+
+                </div>
+              </div>
+
+              <!-- Buttton FileChooser -->
+              <label class="btn btn-primary btn-upload"
+                     for="mobile-upload-button">
+                <input bafFileSelect
+                       multiple
+                       type="file"
+                       id="mobile-upload-button"
+                       style="display: none"
+                       [accept]="allowedFileTypes"
+                       [uploader]="uploader"
+                       [hidden]="true"
+                       (onFileSelected)="notificateForNewFiles($event)">
+                Choose file(s)
+              </label>
+
+            </div>
+
+            <!-- Queue -->
+            <div class="col-md-8">
+
+              <div class="row row-file-header">
+                <div class="col-md-12">
+                  <p>
+                    Queue
+                    <span *ngIf="uploader.queue.length > 0">
+                  ({{ uploader.queue.length }} {{ uploader.queue.length > 1 ? 'Dateien' : 'Datei '}}
+                  / {{ getQueueFileSize() }} MB)
+                </span>
+                  </p>
+                </div>
+              </div>
+              <!-- Über die Queue iterieren und Files anzeigen -->
+              <div class="row row--file"
+                   [class.disabled]="uploadFilesInSingleRequest ? !uploader?.isUploading : false"
+                   *ngFor="let entry of uploader?.queue">
+
+                <div class="col-md-11 col-xs-10 filename">
+                  <span *ngIf="entry.isUploading" class="fa fa-spinner fa-spin"></span>
+                  <span *ngIf="!entry.isUploading" [class]="uploaderUtils.getFileTypeIcon(entry.file.name)"></span>
+                  <span> {{ entry.file.name }} </span>
+                  <span class="filesize"> ({{(entry.file.size / 1000 / 1000).toFixed(2) }} MB)</span>
+                </div>
+                <div class="col-md-1 col-xs-2" class="text-center">
+                  <a href="javascript:"
+                     *ngIf="entry.isUploading"
+                     [title]="'Cancel upload of \'' + entry.file.name + '\''"
+                     (click)="entry.cancel()">
+                    <span class="fa fa-times"></span>
+                  </a>
+                  <ng-container *ngIf="uploadFilesInSingleRequest ? !uploader?.isUploading : !entry.isUploading">
+                    <a href="javascript:"
+                       [title]="'Upload \'' + entry.file.name + '\''"
+                       (click)="entry.upload()">
+                      <span class="fa fa-chevron-circle-up"></span>
+                    </a>
+                    <a href="javascript:"
+                       [title]="'Remove \'' + entry.file.name + '\''"
+                       (click)="uploader.removeFromQueue(entry)">
+                      <span class="fa fa-trash"></span>
+                    </a>
+                  </ng-container>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- START Buttons -->
+          <div class="row row--buttons">
+
+            <!-- clear queue & upload files -->
+            <div *ngIf="!uploader?.isUploading" class="col-md-12">
+              <button
+                type="button"
+                [title]="uploader?.queue?.length > 1 ? 'Upload Files' : 'Upload File'"
+                class="btn btn-primary pull-right"
+                [disabled]="uploader?.queue?.length === 0"
+                (click)="uploader.uploadAll()">
+                {{ uploader?.queue?.length > 1 ? 'Upload Files' : 'Upload File' }}
+              </button>
+              <button
+                type="button"
+                title="Queue leeren"
+                class="btn btn-secondary pull-right"
+                [disabled]="uploader?.queue?.length === 0"
+                (click)="uploader.clearQueue()">
+                Clear queue
+              </button>
+            </div>
+
+            <!-- Progress & Upload Abbrechen -->
+            <ng-container *ngIf="uploader?.isUploading">
+              <div class="col-md-10 col-sm-12 text-right">
+                <p>
+                  <span class="fa fa-spinner fa-spin"></span>
+                  Uploading ...
+                </p>
+              </div>
+
+              <div class="col-md-2 col-sm-12 ">
+                <button
+                  title="Upload abbrechen"
+                  class="btn btn-primary pull-right"
+                  (click)="uploader.cancelAll()">
+                  Cancel upload
+                </button>
+              </div>
+            </ng-container>
+
+          </div>
+          <!-- END Buttons -->
+          <!-- END Uploader -->
+
+
+          <!-- START Uploader Configuration -->
+          <div class="row row--configuration">
+            <div class="col-md-12">
+              <h3>Uploader Configuration</h3>
+            </div>
+          </div>
+
+          <form #exampleForm="ngForm" class="row">
+
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="inputUploadUrl">
+                  uploadUrl
+                  <span>(default: undefined)</span>
+                </label>
+                <input type="text"
+                       class="form-control"
+                       id="inputUploadUrl"
+                       name="inputUploadUrl"
+                       (input)="updateOptions()"
+                       [(ngModel)]="uploadUrl">
+              </div>
+              <div class="form-group">
+                <label for="inputAllowedFileTypes">
+                  allowedFileTypes
+                  <span>(default: undefined)</span>
+                </label>
+                <input type="text"
+                       class="form-control"
+                       id="inputAllowedFileTypes"
+                       name="inputAllowedFileTypes"
+                       (input)="updateOptions()"
+                       [(ngModel)]="allowedFileTypes">
+              </div>
+
+              <div class="form-group">
+                <label for="inputQueueLimit">
+                    queueLimit
+                    <span>(default: undefined)</span>
+                  </label>
+                  <input type="number"
+                         class="form-control"
+                         id="inputQueueLimit"
+                         name="inputQueueLimit"
+                         (input)="updateOptions()"
+                         [(ngModel)]="queueLimit">
+              </div>
+
+              <div class="form-check">
+                <input type="checkbox"
+                       class="form-check-input"
+                       id="inputUploadFilesInSingleRequest"
+                       name="inputUploadFilesInSingleRequest"
+                       (input)="updateOptions()"
+                       [(ngModel)]="uploadFilesInSingleRequest">
+                <label class="form-check-label" for="inputUploadFilesInSingleRequest">
+                  uploadFilesInSingleRequest
+                  <span>(default: false)</span>
+                </label>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <label for="inputAllowedFileTypes">
+                uploaderOptions
+              </label>
+              <pre>{{ uploaderOptions | json }}</pre>
+            </div>
+
+          </form>
+          <!-- END Uploader Configuration -->
+
+        </accordion-group>
+        <!-- END Example -->
+
+
+        <!-- START How to use it -->
+        <accordion-group heading="How to use it">
+          <p>
+            How to use it follows
+          </p>
+        </accordion-group>
+        <!-- END How to use it -->
+
+
+        <!-- START API -->
+        <accordion-group heading="API Doc">
+          <p>
+            API Doc follows
+          </p>
+        </accordion-group>
+        <!-- END API -->
+
+      </accordion>
+    </div>
+  </div>
+  <!-- END Accordion -->
+
+</div>

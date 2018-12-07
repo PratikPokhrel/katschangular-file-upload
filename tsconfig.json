@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "angular-file-upload": [
+        "dist/angular-file-upload"
+      ],
+      "angular-file-upload/*": [
+        "dist/angular-file-upload/*"
+      ]
+    }
   }
 }
