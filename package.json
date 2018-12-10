@@ -26,12 +26,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/tkarzewski/katschangular-file-upload-file-upload.git"
+    "url": "git+ssh://git@github.com/tkarzewski/katschangular-file-upload.git"
   },
   "bugs": {
-    "url": "https://git@github.com/tkarzewski/katschangular-file-upload-file-upload/issues"
+    "url": "https://git@github.com/tkarzewski/katschangular-file-upload/issues"
   },
-  "homepage": "https://git@github.com/tkarzewski/katschangular-file-upload-file-upload#readme",
+  "homepage": "https://git@github.com/tkarzewski/katschangular-file-upload#readme",
   "peerDependencies": {},
   "dependencies": {
     "@angular/animations": "7.2.0-beta.1",
