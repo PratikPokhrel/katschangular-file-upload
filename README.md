@@ -1,6 +1,8 @@
 # Katschangular File Upload
 
-Simple Angular FileUploader with support to upload multiple files in one request
+Simple Angular FileUploader with support to upload multiple files in one request.
+
+See the [demo](http://katschangular.karzewski.de/)
 
 ## What is this
 For a project I needed an Angular Uploader Lib, which is easy to use, offers some config and supports multiple
@@ -33,7 +35,7 @@ is used for 'file-input' field of form and `afo-file-drop` is used for area that
 file or files.
 
 3. More information regarding using of ***ng2-file-upload*** is located in
-  [demo](http://www.tobias-karzewski.de/katschangular-file-upload/) and [demo sources](https://github.com/tkarzewski/katschangular-file-upload/src).
+  [demo](http://katschangular.karzewski.de/) and [demo sources](https://github.com/tkarzewski/katschangular-file-upload/src).
   
 ### Using ***katschangular-file-upload*** in a project
 
@@ -50,3 +52,4 @@ file or files.
 
 5. Initialize it:
    <br>```public uploader:FileUploader = new FileUploader({url: 'https://my-upload.url.com/api''});```
+s
