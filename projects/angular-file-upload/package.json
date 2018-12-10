@@ -1,6 +1,17 @@
 {
   "name": "angular-file-upload",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Simple Angular FileUploader with support to upload multiple files in one request",
+  "author": "Tobias Karzewski <tobias@karzewski.de>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tkarzewski/angular-file-upload.git"
+  },
+  "bugs": {
+    "url": "https://git@github.com/tkarzewski/angular-file-upload/issues"
+  },
+  "homepage": "https://git@github.com/tkarzewski/angular-file-upload#readme",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"

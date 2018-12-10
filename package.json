@@ -1,6 +1,7 @@
 {
   "name": "angular-file-upload-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +10,33 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+
+  "keywords": [
+    "angular",
+    "bootstap",
+    "ng",
+    "ng2",
+    "angular2",
+    "file-upload",
+    "file-uploader",
+    "upload",
+    "uploader",
+    "ng2-file-upload"
+  ],
+  "author": "Tobias Karzewski <tobias@karzewski.de>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tkarzewski/angular-file-upload.git"
+  },
+  "bugs": {
+    "url": "https://git@github.com/tkarzewski/angular-file-upload/issues"
+  },
+  "homepage": "https://git@github.com/tkarzewski/angular-file-upload#readme",
+  "peerDependencies": {
+    "@angular/common": ">=6.0.0",
+    "@angular/core": ">=6.0.0"
+  },
   "dependencies": {
     "@angular/animations": "^7.1.2",
     "@angular/common": "^6.1.0",

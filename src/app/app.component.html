@@ -5,16 +5,16 @@
     <h1 class="display-4">Angular File Upload</h1>
     <p class="lead">
       Angular File Uploader based on <a href="https://github.com/valor-software/ng2-file-upload" target="_blank">ng2-file-upload</a>
-      including some enhancements
+      with support to upload multiple files in one request
     </p>
     <hr class="my-4">
     <p>
-      This example app uses <a href="https://angular.io">Angular 7</a>,
+      This example app uses <a href="https://angular.io">Angular</a>,
       <a href="https://getbootstrap.com">Bootstrap 4</a>,
       <a href="https://valor-software.com/ngx-bootstrap">ngx-bootstrap</a>
       and <a href="http://fontawesome.com/">FontAwesome</a>
     </p>
-    <a class="btn btn-primary btn-lg" href="https://www.github.com/tkarzewski/ng2-file-uploader" role="button">
+    <a class="btn btn-primary btn-lg" href="https://www.github.com/tkarzewski/angular-file-uploader" role="button">
       <span class="fa fa-github"></span>
       View on Github
     </a>
@@ -305,11 +305,85 @@
         <!-- START How to use it -->
         <accordion-group heading="How to use it">
           <p>
-            Use it like the <a href="https://github.com/valor-software/ng2-file-upload">ng-file-upload</a> and enjoy the new
-            option <code>uploadFilesInSingleRequest</code> in the <code>FileUploaderOptions</code> (credits to
-            <a href="https://github.com/valor-software/ng2-file-upload/pull/993">Koen Van der Linden</a>) to upload multiple
-            files in just one request. Be aware that this cannot be combined with <code>disableMultipart</code> is <code>true</code>.
+            Use it like the <a href="https://github.com/valor-software/ng2-file-upload">ng-file-upload</a> and
+            enjoy the new option <code>uploadFilesInSingleRequest</code> in the <code>FileUploaderOptions</code>
+            (credits to <a href="https://github.com/koenvanderlinden">Koen Van der Linden</a>) to upload multiple
+            files in just one request. Be aware that this cannot be combined with <code>disableMultipart</code>
+            is <code>true</code>.
           </p>
+          <p>
+            Following instructions are from <a href="https://github.com/valor-software/ng2-file-upload">ng2-file-upload</a>
+          </p>
+          <h4>Quick start</h4>
+          <ol>
+            <li>
+              <p>
+
+              </p>
+              A recommended way to install <b>angular-file-upload</b> is through <a href="https://www.npmjs.com/search?q=angular-file-upload">
+              node package manager</a> using the following command:
+              <p>
+                <code>npm i -S angular-file-upload</code>
+              </p>
+              <p>
+                Alternatively, you can <a href="https://github.com/tkarzewski/angular-file-upload/archive/master.zip">download it in a ZIP file</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                Currently <b>angular-file-upload</b> contains two directives: <code>afo-file-select</code> and <code>afo-file-drop</code>.
+                <code>afo-file-select</code> is used for a <code>file-input</code> field of form and <code>afo-file-drop</code>
+                is used for area that will be used for dropping of file or files.
+              </p>
+            </li>
+            <li>
+              More information regarding using of <b>angular-file-upload</b> is located in the <a href="http://www.tobias-karzewski.de/angular-file-upload/">demo</a>
+              and <a href="https://github.com/tkarzewski/angular-file-upload/src">demo sources</a>
+            </li>
+            <li>
+            </li>
+          </ol>
+          <h4>Using angular-file-upload in a project</h4>
+          <ol>
+            <li>
+              <p>
+                Install as shown in the above section.
+              </p>
+            </li>
+            <li>
+              <p>
+                Import <code>AngularFileUploadModule</code> into the module that declares the component using <b>angular-file-upload</b>:
+              </p>
+              <p>
+                <code>import {{ '{' }} AngularFileUploadModule {{ '}' }} from 'angular-file-upload';</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                Add it to <code>[imports]</code> under <code>@NgModule</code>:
+              </p>
+              <p>
+                <code>imports: [ ... AngularFileUploadModule, ... ]</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                Import <code>FileUploader</code> into the component:
+              </p>
+              <p>
+                <code>import {{ '{' }}  FileUploader {{ '}' }} from 'angular-file-upload';</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                Initialize it:
+              </p>
+              <p>
+                <code>public uploader:FileUploader = new FileUploader({{ '{' }}url: 'https://my-upload.url.com/api''{{ '}' }});</code>
+              </p>
+            </li>
+          </ol>
+
         </accordion-group>
         <!-- END How to use it -->
 

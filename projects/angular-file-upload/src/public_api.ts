@@ -11,5 +11,4 @@ export * from './lib/file-upload/file-uploader.class';
 export * from './lib/file-upload/file-uploader-utils.class';
 
 export * from './lib/angular-file-upload.service';
-export * from './lib/angular-file-upload.component';
 export * from './lib/angular-file-upload.module';
