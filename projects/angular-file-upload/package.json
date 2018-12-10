@@ -1,5 +1,5 @@
 {
-  "name": "angular-file-upload",
+  "name": "@katsche/angular-file-upload",
   "version": "1.0.0",
   "description": "Simple Angular FileUploader with support to upload multiple files in one request",
   "author": "Tobias Karzewski <tobias@karzewski.de>",
