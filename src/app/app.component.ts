@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FileItem, FileUploader, FileUploaderOptions, FileUploaderUtils } from 'angular-file-upload';
-import { state, style, trigger } from '@angular/animations';
+import { FileItem, FileUploader, FileUploaderOptions, FileUploaderUtils } from '@katsche/angular-file-upload';
 
 
 @Component({
