@@ -13,7 +13,7 @@
   },
   "homepage": "https://git@github.com/tkarzewski/angular-file-upload#readme",
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+    "@angular/common": "7.2.0-beta.1 || ^6.0.0",
+    "@angular/core": "^7.2.0-beta.1 || ^6.0.0"
   }
 }

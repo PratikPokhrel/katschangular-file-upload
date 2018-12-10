@@ -32,7 +32,6 @@ export class AppComponent {
 
 
   updateOptions() {
-    console.log('updateOptions, this.uploadFilesInSingleRequest -> ' + this.uploadFilesInSingleRequest);
     this.uploaderOptions = {
       url: this.uploadUrl,
       uploadFilesInSingleRequest: this.uploadFilesInSingleRequest,
