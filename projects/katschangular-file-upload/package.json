@@ -1,6 +1,6 @@
 {
   "name": "katschangular-file-upload",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple Angular FileUploader with support to upload multiple files in one request",
   "author": "Tobias Karzewski <tobias@karzewski.de>",
   "license": "MIT",
