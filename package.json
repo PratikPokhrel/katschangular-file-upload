@@ -1,5 +1,5 @@
 {
-  "name": "@katsche/angular-file-upload-app",
+  "name": "katschangular-file-upload-app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -26,12 +26,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/tkarzewski/angular-file-upload.git"
+    "url": "git+ssh://git@github.com/tkarzewski/katschangular-file-upload-file-upload.git"
   },
   "bugs": {
-    "url": "https://git@github.com/tkarzewski/angular-file-upload/issues"
+    "url": "https://git@github.com/tkarzewski/katschangular-file-upload-file-upload/issues"
   },
-  "homepage": "https://git@github.com/tkarzewski/angular-file-upload#readme",
+  "homepage": "https://git@github.com/tkarzewski/katschangular-file-upload-file-upload#readme",
   "peerDependencies": {},
   "dependencies": {
     "@angular/animations": "7.2.0-beta.1",

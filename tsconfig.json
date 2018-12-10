@@ -19,11 +19,11 @@
       "dom"
     ],
     "paths": {
-      "@katsche/angular-file-upload": [
-        "dist/angular-file-upload"
+      "katschangular-file-upload": [
+        "dist/katschangular-file-upload"
       ],
-      "@katscheangular-file-upload/*": [
-        "dist/angular-file-upload/*"
+      "katschangular-file-upload/*": [
+        "dist/katschangular-file-upload/*"
       ]
     }
   }

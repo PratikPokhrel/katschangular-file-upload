@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FileItem, FileUploader, FileUploaderOptions, FileUploaderUtils } from '@katsche/angular-file-upload';
+import { FileItem, FileUploader, FileUploaderOptions, FileUploaderUtils } from 'katschangular-file-upload';
 
 
 @Component({

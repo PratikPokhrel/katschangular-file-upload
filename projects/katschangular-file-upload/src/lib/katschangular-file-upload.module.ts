@@ -16,4 +16,4 @@ import { CommonModule } from '@angular/common';
     FileSelectDirective
   ]
 })
-export class AngularFileUploadModule { }
+export class KatschangularFileUploadModule { }

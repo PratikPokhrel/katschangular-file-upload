@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AccordionModule } from 'ngx-bootstrap';
-import { AngularFileUploadModule } from '@katsche/angular-file-upload';
+import { KatschangularFileUploadModule } from 'katschangular-file-upload';
 
 import { AppComponent } from './app.component';
 
@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     FormsModule,
     AccordionModule.forRoot(),
-    AngularFileUploadModule
+    KatschangularFileUploadModule
   ],
   providers: [
   ],

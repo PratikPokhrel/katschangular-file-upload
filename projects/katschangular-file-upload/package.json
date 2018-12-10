@@ -1,17 +1,17 @@
 {
-  "name": "@katsche/angular-file-upload",
+  "name": "katschangular-file-upload",
   "version": "1.0.0",
   "description": "Simple Angular FileUploader with support to upload multiple files in one request",
   "author": "Tobias Karzewski <tobias@karzewski.de>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/tkarzewski/angular-file-upload.git"
+    "url": "git+ssh://git@github.com/tkarzewski/katschangular-file-upload-file-upload.git"
   },
   "bugs": {
-    "url": "https://git@github.com/tkarzewski/angular-file-upload/issues"
+    "url": "https://git@github.com/tkarzewski/katschangular-file-upload-file-upload/issues"
   },
-  "homepage": "https://git@github.com/tkarzewski/angular-file-upload#readme",
+  "homepage": "https://git@github.com/tkarzewski/katschangular-file-upload-file-upload#readme",
   "peerDependencies": {
     "@angular/common": "7.2.0-beta.1 || ^6.0.0",
     "@angular/core": "^7.2.0-beta.1 || ^6.0.0"
