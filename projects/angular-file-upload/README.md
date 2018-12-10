@@ -1,6 +1,6 @@
 # Angular File Upload
 
-Simple configurable FileUploader for Angular with support to upload multiple files in one request
+Simple Angular FileUploader with support to upload multiple files in one request
 
 ## What is this
 For a project I needed an Angular Uploader Lib, which is easy to use, offers some config and supports multiple
