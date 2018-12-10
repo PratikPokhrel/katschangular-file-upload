@@ -27,13 +27,15 @@ export class AppComponent {
 
   constructor() {
     this.updateOptions();
+    this.handleCompleteAll();
   }
 
+
   updateOptions() {
+    console.log('updateOptions, this.uploadFilesInSingleRequest -> ' + this.uploadFilesInSingleRequest);
     this.uploaderOptions = {
       url: this.uploadUrl,
       uploadFilesInSingleRequest: this.uploadFilesInSingleRequest,
-      removeAfterUpload: true,
       queueLimit: this.queueLimit
     };
 
@@ -45,6 +47,13 @@ export class AppComponent {
     }
 
     this.uploader.setOptions(this.uploaderOptions);
+  }
+
+
+  handleCompleteAll() {
+    this.uploader.onCompleteAll = () => {
+      this.uploader.clearQueue();
+    };
   }
 
 

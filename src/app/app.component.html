@@ -31,11 +31,14 @@
         <accordion-group heading="What is this">
           <p>
             For a project I needed an Angular Uploader Lib, which is easy to use, offers some config and supports
-            multiple
-            Files uploaded in one Request. Because I didn't find any fullfilling these requirements I cloned <a
-            href="https://github.com/valor-software/ng2-file-upload" target="_blank">ng2-file-upload</a>,
-            merged <a href="https://github.com/valor-software/ng2-file-upload/pull/993">this PullRequest</a>, made some
-            Enhancements and created some Components to use it quickly.
+            multiple Files uploaded in one Request. Because I didn't find any fullfilling these requirements I
+            cloned <a href="https://github.com/valor-software/ng2-file-upload" target="_blank">ng2-file-upload</a>,
+            merged <a href="https://github.com/valor-software/ng2-file-upload/pull/993">this PullRequest</a>, made
+            some Enhancements and created some Components to use it quickly.
+          </p>
+          <p>
+            For future Releases I am thinking of offer Components like a Dropzone, Queue, Progressbar and Buttons similar
+            to the Example-Application. Feel free to contribute :-)
           </p>
           <p>
             So credits go to <a href="https://github.com/valor-software/">Valor Software</a> and
@@ -44,17 +47,22 @@
         </accordion-group>
         <!-- END What is this -->
 
+
         <!-- START Example -->
         <accordion-group heading="Example" [isOpen]="true">
 
-          <!-- Start Uploader -->
+          <!-- START Uploader -->
+
+          <!-- Info for added Files-->
           <div class="alert alert-info"
                [ngStyle]="{ 'visibility' : displayAddedFiles ? 'visible' : 'hidden' }">
             {{ 'Added ' + uploader.queue.length + ' ' + (uploader.queue.length > 1 ? 'files' : 'file') + ' with ' +
             getQueueFileSize() +' MB' }}
           </div>
 
-          <div class="row">
+
+          <!-- START Dropzone and Queue-->
+          <div class="row row--dropzone-queue">
 
             <!-- Dropzone & Button -->
             <div class="col-md-4">
@@ -76,11 +84,11 @@
                          (onFileSelected)="notificateForNewFiles($event)">
 
                   <i class="fa fa-upload"></i>
-                  <p>
+                  <p class="dropzone-info">
                     Drag and drop files here<br>
                     or click to choose
                   </p>
-                  <p>
+                  <p class="dropzone-limitations">
                     (max. {{ queueLimit }} files)
                   </p>
 
@@ -123,13 +131,13 @@
                    [class.disabled]="uploadFilesInSingleRequest ? !uploader?.isUploading : false"
                    *ngFor="let entry of uploader?.queue">
 
-                <div class="col-md-11 col-xs-10 filename">
+                <div *ngIf="!entry.isUploaded" class="col-md-10 col-xs-9 filename">
                   <span *ngIf="entry.isUploading" class="fa fa-spinner fa-spin"></span>
                   <span *ngIf="!entry.isUploading" [class]="uploaderUtils.getFileTypeIcon(entry.file.name)"></span>
                   <span> {{ entry.file.name }} </span>
                   <span class="filesize"> ({{(entry.file.size / 1000 / 1000).toFixed(2) }} MB)</span>
                 </div>
-                <div class="col-md-1 col-xs-2" class="text-center">
+                <div  *ngIf="!entry.isUploaded"class="col-md-2 col-xs-3 text-right">
                   <a href="javascript:"
                      *ngIf="entry.isUploading"
                      [title]="'Cancel upload of \'' + entry.file.name + '\''"
@@ -154,9 +162,11 @@
 
             </div>
           </div>
+          <!-- END Dropzone and Queue-->
 
-          <!-- START Buttons -->
-          <div class="row row--buttons">
+
+          <!-- START Buttons & Progress-->
+          <div class="row row--buttons-progress">
 
             <!-- clear queue & upload files -->
             <div *ngIf="!uploader?.isUploading" class="col-md-12">
@@ -178,13 +188,24 @@
               </button>
             </div>
 
-            <!-- Progress & Upload Abbrechen -->
+            <!-- MultiFileOneProgress Progress & Upload Abbrechen -->
             <ng-container *ngIf="uploader?.isUploading">
+
               <div class="col-md-10 col-sm-12 text-right">
-                <p>
+
+                <div *ngIf="!uploadFilesInSingleRequest" class="progress">
+                  <div class="progress-bar"
+                       role="progressbar"
+                       [ngStyle]="{ 'width.%': uploader.progress }">
+                    {{ uploader.progress }}%
+                  </div>
+                </div>
+
+                <p *ngIf="uploadFilesInSingleRequest">
                   <span class="fa fa-spinner fa-spin"></span>
                   Uploading ...
                 </p>
+
               </div>
 
               <div class="col-md-2 col-sm-12 ">
@@ -198,7 +219,8 @@
             </ng-container>
 
           </div>
-          <!-- END Buttons -->
+          <!-- END Buttons & Progress -->
+
           <!-- END Uploader -->
 
 
@@ -256,8 +278,8 @@
                        class="form-check-input"
                        id="inputUploadFilesInSingleRequest"
                        name="inputUploadFilesInSingleRequest"
-                       (input)="updateOptions()"
-                       [(ngModel)]="uploadFilesInSingleRequest">
+                       [ngModel]="uploadFilesInSingleRequest"
+                       (ngModelChange)="uploadFilesInSingleRequest = !uploadFilesInSingleRequest; updateOptions()">
                 <label class="form-check-label" for="inputUploadFilesInSingleRequest">
                   uploadFilesInSingleRequest
                   <span>(default: false)</span>
@@ -283,19 +305,14 @@
         <!-- START How to use it -->
         <accordion-group heading="How to use it">
           <p>
-            How to use it follows
+            Use it like the <a href="https://github.com/valor-software/ng2-file-upload">ng-file-upload</a> and enjoy the new
+            option <code>uploadFilesInSingleRequest</code> in the <code>FileUploaderOptions</code> (credits to
+            <a href="https://github.com/valor-software/ng2-file-upload/pull/993">Koen Van der Linden</a>) to upload multiple
+            files in just one request. Be aware that this cannot be combined with <code>disableMultipart</code> is <code>true</code>.
           </p>
         </accordion-group>
         <!-- END How to use it -->
 
-
-        <!-- START API -->
-        <accordion-group heading="API Doc">
-          <p>
-            API Doc follows
-          </p>
-        </accordion-group>
-        <!-- END API -->
 
       </accordion>
     </div>
