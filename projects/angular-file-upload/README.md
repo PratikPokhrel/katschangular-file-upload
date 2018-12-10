@@ -12,7 +12,7 @@ some Components to use it quickly.
 For future Releases I am thinking of offer Components like a Dropzone, Queue, Progressbar and Buttons similar 
 to the Example-Application. Feel free to contribute :-)
 
-So credits go to Valor Software and Koen van der Linden
+So credits go to [Valor Software](https://valor-software.com) and [Koen van der Linden](https://github.com/koenvanderlinden)
 
 ## How to use it
 Use it like the [ng2-file-upload](https://github.com/valor-software/ng2-file-upload) and enjoy the new option
