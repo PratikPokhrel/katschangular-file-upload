@@ -3,27 +3,6 @@ import { FileLikeObject } from './file-like-object.class';
 import { FileItem } from './file-item.class';
 import { FileType } from './file-type.class';
 
-/**
- * Der FileUploader ist usrpünglich geforked von https://github.com/valor-software/ng2-file-upload/ inkl. dem
- * PullRequest https://github.com/valor-software/ng2-file-upload/pull/993 um mehrere Dateien zu einem Upload zusammen
- * zu fassen.
- *
- * Da es bisher noch kein allgemeingültiges Design, sondern lediglich ein Design für den Schadentracker in
- * MeineBarmenia gibt, ist der FileUploader bisher keine Komponente mit GUI, sondern eher ein Service, der
- * in eigenen Komponenten und Services genutzt werden kann.
- *
- * In späteren Versionen bieten sich vielleicht folgende Komponenten an
- * - baf-file-uploader-dropzone
- *   eine gestylte Dropzone mit Defaulttext oder ng-content für eigenen Text mit Inputs für uploader und z.B. allowedFiletypes
- * - baf-file-uploader-queue
- *   eine gestylte Liste mit den Files aus der Warteschlange inkl. FileIcons und Aktionen für Start, Abbrechen und Entfernen
- * - baf-file-uploader-dropzone-queue
- *   eine Dropzone inkl Warteschlange mit Defaulttext oder ng-content für eigenen Text mit Inputs für uploader und z.B. allowedFiletypes
- * - baf-file-uploader-filechooser
- *   einen gestylten Button, der einen Dialog zur Dataiauswahl öffnet
- */
-
-
 function isFile(value: any): boolean {
   return (File && value instanceof File);
 }
